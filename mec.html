@@ -1,0 +1,200 @@
+<html>
+    <title>
+        Cse Results
+    </title>
+    <head>
+    <head>
+
+            <style>
+                .submit{
+                    padding-top: 30px;
+                    text-align: center;
+                }
+                html{
+                    background-color:#9370db ;
+                }
+                tbody{
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    padding: 50px;
+                    background-color: #e6e6fa;
+                    text-align: center;
+                    
+                }
+                .tbody{
+                    text-align: center;
+                    padding-inline-start: 14%;
+                    padding-top: 20px;
+                    
+                }
+                td{
+                    padding: 15px;
+                }
+                .result{
+                  font-size:30px;
+                  color:white;
+                  border:5px solid green;
+                    padding:5px;
+                    font-family:Tahoma,sans-serif;
+                    border-radius:10px;
+                    text-align:center;
+                    overflow:hidden;
+                    background-color:grey;
+                    margin:50px;
+                }
+            </style>
+    </head>
+    <body>
+       
+        <div class="tbody">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SUBJECT</th>
+                        <th>YOUR GRADE</th>
+                        <th>CREDIT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Subject 1</td>
+                        <td><input type="text" id="sub1Gpa"></td>
+                        <td>
+                            <input type="text"id="cred1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Subject 2</td>
+                        <td><input type="text" id="sub2Gpa"></td>
+                        <td>
+                            <input type="text"id="cred2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Subject 3</td>
+                        <td><input type="text" id="sub3Gpa"></td>
+                        <td><input type="text"id="cred3"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 4</td>
+                        <td><input type="text" id="sub4Gpa"></td>
+                        <td><input type="text" id="cred4"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 5</td>
+                        <td><input type="text" id="sub5Gpa"></td>
+                        <td><input type="text" id="cred5"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 6</td>
+                        <td><input type="text" id="sub6Gpa"></td>
+                        <td><input type="text" id="cred6"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 7</td>
+                        <td><input type="text" id="sub7Gpa"></td>
+                        <td><input type="text" id="cred7"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 8</td>
+                        <td><input type="text" id="sub8Gpa"></td>
+                        <td><input type="text"id="cred8"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 9</td>
+                        <td><input type="text" id="sub9Gpa"></td>
+                        <td>
+                            <input type="text"id="cred9">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Subject 10</td>
+                        <td><input type="text" id="sub10Gpa"></td>
+                        <td>
+                            <input type="text"id="cred10">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Subject 11</td>
+                        <td><input type="text" id="sub11Gpa"></td>
+                        <td>
+                            <input type="text"id="cred11">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Subject 12</td>
+                        <td><input type="text" id="sub12Gpa"></td>
+                        <td>
+                            <input type="text"id="cred12">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="submit">
+<button onclick="fun4()"id="btn1">submit</button>       
+ </div>
+ <div id="resultGpa"></div>
+        <script type="text/javascript">
+
+            
+            function fun4(){
+              let num=[1,2,3,4,5,6,7,8,9,10,11,12];
+              let subGpa=new Array;
+                let sub1=new Array;
+                let credits=new Array;
+                let avgSub=0;
+                let avgCred=0;
+
+
+
+              for(let i of num){
+             credits=document.getElementById("cred"+i).value;
+             console.log(credits);
+             numcredits=parseFloat(credits);
+             subGpa=document.getElementById("sub"+i+"Gpa").value;
+
+             if(credits==""){
+                 credits=0;
+             }
+             else{
+                 numcredits=document.getElementById("cred"+i).value;
+             }
+
+            
+
+              
+
+             switch(subGpa){
+                    case "S":sub1=10;break;
+                    case "A":
+                        sub1=9;
+                        break;
+                    case "B":sub1=8;break;
+                    case "C":sub1=7;break;
+                    case "D":sub1=6;break;
+                    case "F":sub1=0;break;
+                    default:sub1=0;
+                 }
+              
+                 avgSub=avgSub+(sub1*credits);
+                 avgCred=avgCred+(credits*10);
+                 
+                
+                }
+                let totalGpa=(avgSub/avgCred)*10;
+                totalGpa=totalGpa.toFixed(2);
+                let paragraph=document.createElement("p");
+                paragraph.classList.add("result");
+                paragraph.id="paragraph";
+                paragraph.innerHTML="CONGRATULATIONS! </br></br> YOUR GPA IS:" +totalGpa;
+                resultGpa.appendChild(paragraph);
+
+              }
+                
+                
+            </script>
+     
+       
+        
+    </body>
+</html>

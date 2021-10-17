@@ -1,0 +1,177 @@
+<html>
+    <title>
+        Cse Results
+    </title>
+    <head>
+
+            <style>
+                .submit{
+                    padding-top: 30px;
+                    text-align: center;
+                }
+                html{
+                    background-color:#9370db ;
+                }
+                tbody{
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    padding: 50px;
+                    background-color: #e6e6fa;
+                    text-align: center;
+                    
+                }
+                .tbody{
+                    text-align: center;
+                    padding-inline-start: 14%;
+                    padding-top: 20px;
+                    
+                }
+                td{
+                    padding: 15px;
+                }
+                .result{
+                  font-size:30px;
+                  color:white;
+                  border:5px solid green;
+                    padding:5px;
+                    font-family:Tahoma,sans-serif;
+                    border-radius:10px;
+                    text-align:center;
+                    overflow:hidden;
+                    background-color:grey;
+                    margin:50px;
+                }
+            </style>
+    </head>
+    <body>
+       
+        <div class="tbody">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SUBJECT</th>
+                        <th>CREDIT</th>
+                        <th>YOUR GRADE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Numerical Methods,Probability And Statistics</td>
+                        <td>
+                          <p id="cred1">3</p>
+                        </td>
+                        <td><input type="text"id="sub1Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Compiler Design</td>
+                        <td><p id="cred2">3</p></td>
+                        <td>
+                            <input type="text"id="sub2Gpa">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Computer Organization</td>
+                        <td><p id="cred3">3</p></td>
+                        <td><input type="text"id="sub3Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Operating Systems</td>
+                        <td><p id="cred4">3</p></td>
+                        <td><input type="text" id="sub4Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineering</td>
+                        <td><p id="cred5">3</p></td>
+                        <td><input type="text" id="sub5Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Computer Networks</td>
+                        <td><p id="cred6">3</p></td>
+                        <td><input type="text" id="sub6Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Universal Human Values</td>
+                        <td><p id="cred7">3</p></td>
+                        <td><input type="text" id="sub7Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Computer Organization Lab</td>
+                        <td><p id="cred8">1</p></td>
+                        <td><input type="text"id="sub8Gpa"></td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineering Lab</td>
+                        <td><p id="cred9">1</p></td>
+                        <td>
+                            <input type="text"id="sub9Gpa">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Computer Networks And Operating Systems Lab</td>
+                        <td><p id="cred10">1.5</p></td>
+                        <td>
+                            <input type="text"id="sub10Gpa">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="submit">
+<button onclick="fun1()"id="btn1">submit</button>       
+ </div>
+ <div id="resultGpa"></div>
+        <script type="text/javascript">
+
+            
+            function fun1(){
+              let num=[1,2,3,4,5,6,7,8,9,10];
+              let subGpa=new Array;
+                let sub1=new Array;
+                let credits=new Array;
+                let avgSub=0;
+                let avgCred=0;
+
+
+
+              for(let i of num){
+          
+
+             subGpa=document.getElementById("sub"+i+"Gpa").value;
+             credits=document.getElementById("cred"+i).textContent;
+             let numCredits=parseFloat(credits);
+             console.log(numCredits);
+
+              
+
+             switch(subGpa){
+                    case "S":sub1=10;break;
+                    case "A":
+                        sub1=9;
+                        break;
+                    case "B":sub1=8;break;
+                    case "C":sub1=7;break;
+                    case "D":sub1=6;break;
+                    case "F":sub1=0;break;
+                    default:sub1=0;
+                 }
+                 avgSub=avgSub+(sub1*numCredits);
+                 avgCred=avgCred+(numCredits*10);
+                 
+                
+                }
+                let totalGpa=(avgSub/avgCred)*10;
+                totalGpa=totalGpa.toFixed(2);
+                let paragraph=document.createElement("p");
+                paragraph.classList.add("result");
+                paragraph.id="paragraph";
+                paragraph.innerHTML="CONGRATULATIONS! </br></br> YOUR GPA IS:" +totalGpa;
+                resultGpa.appendChild(paragraph);
+
+              }
+                
+                
+            </script>
+     
+       
+        
+    </body>
+</html>
